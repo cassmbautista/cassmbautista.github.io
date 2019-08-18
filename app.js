@@ -1,5 +1,6 @@
 Vue.use(Lightbox);
 Vue.use(VueRouter);
+Vue.use(Inkline);
 
 const router = new VueRouter({
   mode: "history",
