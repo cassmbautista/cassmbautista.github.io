@@ -1,11 +1,15 @@
 Vue.use(Lightbox);
 Vue.use(VueRouter);
 
-
 const router = new VueRouter({
   mode: "history",
   base: '/',
   routes: [
+    {
+      path: '*',
+      name: '404',
+      component:  httpVueLoader("./views/NotFound.vue")
+    },
     {
       path: "/",
       component: httpVueLoader("./views/Home.vue")
@@ -23,5 +27,12 @@ const app = new Vue({
   components: {
     'app': httpVueLoader('./App.vue')
   },
-  router
+  router,
+  created () {
+	const redirect = sessionStorage.redirect
+	delete sessionStorage.redirect
+    if (redirect && redirect != location.href) {
+      this.$router.push(redirect)
+    }
+  }
 });
