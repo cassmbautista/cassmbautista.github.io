@@ -6,12 +6,12 @@
       <i-column xl="3" lg="4" md="6" sm="8" xs="12">
         <strong>Categories:</strong>
         <i-select v-model="selectedFilter">
-          <i-select-option value="all">All</i-select-option>
           <i-select-option
             v-for="(filter, filterIndex) in filters"
             v-text="capitalizeFirstLetter(filter)"
             :key="'filter' + filterIndex"
             :value="filter"
+            :label="capitalizeFirstLetter(filter)"
           ></i-select-option>
         </i-select>
       </i-column>
@@ -99,9 +99,9 @@ module.exports = {
         }
         let filter = 'all';
         // gallery/paintings/Mr._Cool.jpg => ['gallery', 'paintings', 'Mr._Cool.jpg']
-        if (src.split('/').length > 2) {
+        if (src.split('/').length > 3) {
           // filter = 'paintings'
-          filter = src.split('/')[1];
+          filter = src.split('/')[2];
         }
         let thumbnail = false;
         this.imageFiles.forEach(function (thumb) {
@@ -129,6 +129,7 @@ module.exports = {
       this.images.forEach(function (image) {
         filters.push(image.filter);
       });
+      filters.push('all');
       return new Set(filters);
     }
   },
