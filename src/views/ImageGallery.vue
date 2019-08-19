@@ -18,7 +18,7 @@
     </i-row>
 
     <i-row>
-      <i-column v-for="(image, imageIndex) in images">
+      <i-column v-for="(image, imageIndex) in images" class="_margin-bottom-3-4">
         <img
           v-if="selectedFilter === 'all' || selectedFilter === image.filter"
           :key="'image' + imageIndex"
