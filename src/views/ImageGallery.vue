@@ -1,32 +1,34 @@
 <template>
-  <div>
+  <i-container>
     <h1 class="mb-5">Gallery</h1>
 
-    <div class="mb-4">
-      <strong>Categories:</strong>
-      <select v-model="selectedFilter" class="custom-select w-auto">
-        <option value="all">All</option>
-        <option
-          v-for="(filter, filterIndex) in filters"
-          v-text="capitalizeFirstLetter(filter)"
-          :key="'filter' + filterIndex"
-          :value="filter"
-        ></option>
-      </select>
-    </div>
+    <i-row class="_margin-bottom-3-4">
+      <i-column xl="3" lg="4" md="6" sm="8" xs="12">
+        <strong>Categories:</strong>
+        <i-select v-model="selectedFilter">
+          <i-select-option value="all">All</i-select-option>
+          <i-select-option
+            v-for="(filter, filterIndex) in filters"
+            v-text="capitalizeFirstLetter(filter)"
+            :key="'filter' + filterIndex"
+            :value="filter"
+          ></i-select-option>
+        </i-select>
+      </i-column>
+    </i-row>
 
-    <div class="d-flex flex-column justify-content-center align-items-center flex-sm-row justify-content-sm-between flex-wrap">
-      <template v-for="(image, imageIndex) in images">
+    <i-row>
+      <i-column v-for="(image, imageIndex) in images">
         <img
           v-if="selectedFilter === 'all' || selectedFilter === image.filter"
           :key="'image' + imageIndex"
           :src="image.thumbnail || image.name"
           :alt="image.alt"
-          class="img-fluid img-thumbnail mb-3"
+          class="image -thumbnail"
           @click="showLightbox(image.name)"
         />
-      </template>
-    </div>
+      </i-column>
+    </i-row>
 
     <lightbox
       :images="images"
@@ -34,7 +36,7 @@
       :filter="selectedFilter"
       ref="lightbox"
     ></lightbox>
-  </div>
+  </i-container>
 </template>
 
 <script>
@@ -74,7 +76,7 @@ module.exports = {
     imageFiles: function () {
       return this.allFiles.filter(function (file) {
         return !!(
-          file.path.startsWith('gallery/') &&
+          file.path.startsWith('src/gallery/') &&
           file.path.includes('.') &&
           !file.path.endsWith('.md')
         );
@@ -139,7 +141,7 @@ module.exports = {
 </script>
 
 <style scoped>
-.img-thumbnail {
+.image.-thumbnail {
   max-width: 200px;
   max-height: 200px;
 }
