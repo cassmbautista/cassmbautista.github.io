@@ -11,23 +11,24 @@
             v-text="capitalizeFirstLetter(filter)"
             :key="'filter' + filterIndex"
             :value="filter"
-            :label="capitalizeFirstLetter(filter)"
           ></i-select-option>
         </i-select>
       </i-column>
     </i-row>
 
-    <i-row>
-      <i-column v-for="(image, imageIndex) in images" class="_margin-bottom-3-4">
-        <img
-          v-if="selectedFilter === 'all' || selectedFilter === image.filter"
-          :key="'image' + imageIndex"
-          :src="image.thumbnail || image.name"
-          :alt="image.alt"
-          class="image -thumbnail"
-          @click="showLightbox(image.name)"
-        />
-      </i-column>
+    <i-row class="_display-flex _justify-content-start">
+      <template v-for="(image, imageIndex) in images">
+        <i-column class="_margin-bottom-3-4 _flex-grow-0" 
+            v-if="selectedFilter === 'all' || selectedFilter === image.filter">
+          <img
+            :key="'image' + imageIndex"
+            :src="image.thumbnail || image.name"
+            :alt="image.alt"
+            class="image -thumbnail"
+            @click="showLightbox(image.name)"
+          />
+        </i-column>
+      </template>
     </i-row>
 
     <lightbox
