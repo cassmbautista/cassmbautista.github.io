@@ -1,4 +1,4 @@
-Vue.use(Lightbox);
+// Vue.use(Lightbox);
 Vue.use(VueRouter);
 Vue.use(Inkline);
 
@@ -13,10 +13,12 @@ const router = new VueRouter({
     },
     {
       path: "/",
+      name: "home",
       component: httpVueLoader("./views/Home.vue")
     },
     {
       path: "/about",
+      name: "about",
       component: httpVueLoader("./views/About.vue")
     }
   ]
