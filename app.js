@@ -1,6 +1,6 @@
-// Vue.use(Lightbox);
-Vue.use(VueRouter);
+Vue.use(Lightbox);
 Vue.use(Inkline);
+Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: "history",
@@ -9,17 +9,22 @@ const router = new VueRouter({
     {
       path: '*',
       name: '404',
-      component:  httpVueLoader("./views/NotFound.vue")
+      component:  httpVueLoader("./src/views/NotFound.vue")
     },
     {
       path: "/",
       name: "home",
-      component: httpVueLoader("./views/Home.vue")
+      component: httpVueLoader("./src/views/Home.vue")
     },
     {
       path: "/about",
       name: "about",
-      component: httpVueLoader("./views/About.vue")
+      component: httpVueLoader("./src/views/About.vue")
+    },
+    {
+      path: "/gallery",
+      name: "gallery",
+      component: httpVueLoader("./src/views/ImageGallery.vue")
     }
   ]
 });
@@ -28,7 +33,7 @@ const app = new Vue({
   el: '#app',
   template: '<app></app>',
   components: {
-    'app': httpVueLoader('./App.vue')
+    'app': httpVueLoader('./src/App.vue')
   },
   router,
   created () {
