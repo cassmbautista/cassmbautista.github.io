@@ -5,6 +5,7 @@
     <div>
       <router-view />
     </div>
+    <home-footer></home-footer>
   </div>
 </template>
 
@@ -13,7 +14,8 @@ module.exports = {
   name: 'App',
   components: {
     'top-header': httpVueLoader("./views/Header.vue"),
-    'navigation-top': httpVueLoader("./views/NavTop.vue")
+    'navigation-top': httpVueLoader("./views/NavTop.vue"),
+    'home-footer': httpVueLoader("./views/Footer.vue")
   }
 }
 </script>

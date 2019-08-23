@@ -17,14 +17,14 @@ const router = new VueRouter({
       component: httpVueLoader("./src/views/Home.vue")
     },
     {
-      path: "/about",
-      name: "about",
-      component: httpVueLoader("./src/views/About.vue")
-    },
-    {
       path: "/gallery",
       name: "gallery",
       component: httpVueLoader("./src/views/ImageGallery.vue")
+    },
+    {
+      path: "/conact",
+      name: "contact",
+      component: httpVueLoader("./src/views/Contact.vue")
     }
   ]
 });
