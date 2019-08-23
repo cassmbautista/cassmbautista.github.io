@@ -21,6 +21,11 @@ const router = new VueRouter({
       name: "gallery",
       component: httpVueLoader("./src/views/ImageGallery.vue")
     },
+    {
+      path: "/blog",
+      name: "blog",
+      component: httpVueLoader("./src/views/BlogPosts.vue")
+    },
     // {
     //   path: "/contact",
     //   name: "contact",

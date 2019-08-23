@@ -4,6 +4,7 @@
     <i-navbar-items>
         <i-nav>
             <i-nav-item :to="{ name: 'gallery' }">Gallery</i-nav-item>
+            <i-nav-item :to="{ name: 'blog' }">Blog</i-nav-item>
             <!-- <i-nav-item :to="{ name: 'contact' }">Conact</i-nav-item> -->
         </i-nav>
     </i-navbar-items>
