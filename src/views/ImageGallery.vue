@@ -8,7 +8,7 @@
         <i-select v-model="selectedFilter">
           <i-select-option
             v-for="(filter, filterIndex) in filters"
-            v-text="capitalizeFirstLetter(filter)"
+            v-text="getFilterLabel(filter)"
             :key="'filter' + filterIndex"
             :value="filter"
           ></i-select-option>
@@ -19,7 +19,7 @@
     <i-row class="_display-flex _justify-content-start">
       <template v-for="(image, imageIndex) in images">
         <i-column class="_margin-bottom-3-4 _flex-grow-0" 
-            v-if="selectedFilter === 'all' || selectedFilter === image.filter">
+            v-if="selectedFilter === 'All' || selectedFilter === image.filter">
           <img
             :key="'image' + imageIndex"
             :src="image.thumbnail || image.name"
@@ -46,16 +46,15 @@ module.exports = {
   data: function () {
     return {
       allFiles: [],
-      selectedFilter: 'all'
+      selectedFilter: 'All'
     };
   },
   methods: {
     showLightbox: function (imageName) {
-    	console.log(imageName)
       this.$refs.lightbox.show(imageName);
     },
-    capitalizeFirstLetter: function (phrase) {
-      return phrase.charAt(0).toUpperCase() + phrase.slice(1);
+    getFilterLabel: function (filter) {
+      return filter.split('_').join(' ');
     },
     getGitTree: function () {
       this.loading = true;
@@ -98,7 +97,7 @@ module.exports = {
         if (alt.endsWith(' th')) {
           return;
         }
-        let filter = 'all';
+        let filter = 'All';
         // gallery/paintings/Mr._Cool.jpg => ['gallery', 'paintings', 'Mr._Cool.jpg']
         if (src.split('/').length > 3) {
           // filter = 'paintings'
@@ -126,12 +125,28 @@ module.exports = {
       return images;
     },
     filters: function () {
-      let filters = [];
+      let filters = {
+        'All': true
+      };
       this.images.forEach(function (image) {
-        filters.push(image.filter);
+        filters[image.filter] = true;
       });
-      filters.push('all');
-      return new Set(filters);
+      filters = Object.keys(filters);
+      return filters.sort((a, b) => {
+        if(a === 'All') {
+          return -1;
+        } 
+        if(b === 'All') {
+          return 1;
+        }
+        if(a < b) {
+          return -1;
+        }
+        if(a > b) {
+          return 1;
+        }
+        return 0;
+      });
     }
   },
   created: function () {
