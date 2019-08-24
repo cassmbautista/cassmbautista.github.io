@@ -1,6 +1,6 @@
 <template>
   <i-container>
-    <h1 class="mb-5">Gallery</h1>
+    <h1>Gallery</h1>
 
     <i-row class="_margin-bottom-3-4">
       <i-column xl="3" lg="4" md="6" sm="8" xs="12">

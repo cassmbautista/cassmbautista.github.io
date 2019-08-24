@@ -1,7 +1,7 @@
 <template functional>
-  <div ref="testNotFound">
+  <i-container>
     <h1>404 Not Found</h1>
-  </div>
+  </i-container>
 </template>
 
 <script>
