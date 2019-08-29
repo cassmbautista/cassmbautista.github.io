@@ -19,7 +19,7 @@
     <i-row class="_display-flex _justify-content-start">
       <template v-for="(image, imageIndex) in images">
         <i-column class="_margin-bottom-3-4 _flex-grow-0" 
-            v-if="selectedFilter === 'All' || selectedFilter === image.filter">
+            v-if="selectedFilter === 'all' || selectedFilter === image.filter">
           <img
             :key="'image' + imageIndex"
             :src="image.thumbnail || image.name"
@@ -46,7 +46,7 @@ module.exports = {
   data: function () {
     return {
       allFiles: [],
-      selectedFilter: 'All'
+      selectedFilter: 'all'
     };
   },
   methods: {
@@ -54,7 +54,8 @@ module.exports = {
       this.$refs.lightbox.show(imageName);
     },
     getFilterLabel: function (filter) {
-      return filter.split('_').join(' ');
+      let label = filter.charAt(0).toUpperCase() + filter.slice(1);
+      return label.split('_').join(' ');
     },
     getGitTree: function () {
       this.loading = true;
@@ -97,7 +98,7 @@ module.exports = {
         if (alt.endsWith(' th')) {
           return;
         }
-        let filter = 'All';
+        let filter = 'all';
         // gallery/paintings/Mr._Cool.jpg => ['gallery', 'paintings', 'Mr._Cool.jpg']
         if (src.split('/').length > 3) {
           // filter = 'paintings'
@@ -126,17 +127,17 @@ module.exports = {
     },
     filters: function () {
       let filters = {
-        'All': true
+        'all': true
       };
       this.images.forEach(function (image) {
         filters[image.filter] = true;
       });
       filters = Object.keys(filters);
       return filters.sort((a, b) => {
-        if(a === 'All') {
+        if(a === 'all') {
           return -1;
         } 
-        if(b === 'All') {
+        if(b === 'all') {
           return 1;
         }
         if(a < b) {
