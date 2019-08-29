@@ -26,11 +26,11 @@ const router = new VueRouter({
       name: "blog",
       component: httpVueLoader("./src/views/Blog.vue")
     },
-    // {
-    //   path: "/contact",
-    //   name: "contact",
-    //   component: httpVueLoader("./src/views/Contact.vue")
-    // }
+    {
+      path: "/contact",
+      name: "contact",
+      component: httpVueLoader("./src/views/Contact.vue")
+    }
   ]
 });
 

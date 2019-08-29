@@ -8,7 +8,7 @@
         <i-select v-model="selectedFilter">
           <i-select-option
             v-for="(filter, filterIndex) in filters"
-            v-text="getFilterLabel(filter)"
+            :label="getFilterLabel(filter)"
             :key="'filter' + filterIndex"
             :value="filter"
           ></i-select-option>
