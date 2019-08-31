@@ -1,5 +1,3 @@
-title: 'Getting Started: Sewing Tools'
-
 # Getting Started: Sewing Tools
 
 This is my current setup for my sewing tools:
