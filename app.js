@@ -50,9 +50,9 @@ const app = new Vue({
   },
   router,
   created () {
-	const redirect = sessionStorage.redirect
-	delete sessionStorage.redirect
-    if (redirect && redirect != location.href) {
+    const redirect = sessionStorage.redirect
+    delete sessionStorage.redirect
+    if (redirect && redirect !== location.href) {
       this.$router.push(redirect)
     }
   }
