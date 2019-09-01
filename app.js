@@ -27,6 +27,14 @@ const router = new VueRouter({
       component: httpVueLoader("./src/views/Blog.vue")
     },
     {
+      path: "/blog/:path",
+      name: "blogPosts",
+      component: httpVueLoader("./src/views/BlogPosts.vue"),
+      props: (route) => ({
+        path: route.params.path
+      })
+    },
+    {
       path: "/contact",
       name: "contact",
       component: httpVueLoader("./src/views/Contact.vue")

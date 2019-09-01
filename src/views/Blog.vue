@@ -16,12 +16,10 @@
       </i-column>
     </i-row> -->
 	
-	<i-card v-for="card of cards">
-	    <h4 class="title">{{card.title}}</h4>
-	    <p class="subtitle">{{card.subtitle}}</p>
-	    <p>
-	        {{card.description}}
-	    </p>
+	<i-card v-for="card of cards" variant="light">
+    <template slot="header">{{card.title}}</template>
+		{{card.description}}
+		<router-link :to="linkTo(card)">Read More ...</router-link>
 	</i-card>
 </i-container>
 </template>
@@ -53,25 +51,30 @@ module.exports = {
 			});
 		},
 		getCards: function () {
-			console.log('here')
-			console.log(this.blogFiles)
 			for(let blogFile of this.blogFiles){
-				console.log(blogFile)
 				axios.get(blogFile.path)
 					.then(function (response) {
-						console.log(response.data)
-						this.cards.push(JSON.parse(response.data));
+						response.data.path = blogFile.path.replace('src/blog/', "").replace('.json', '');
+						this.cards.push(response.data);
 					}.bind(this));
 			}
-		}
+		},
+    linkTo: function (row) {
+      return {
+        name: 'blogPosts',
+        params: {
+					title: row.title,
+          path: row.path
+        }
+      };
+    },
 	},
 	computed: {
     blogFiles: function () {
       return this.allFiles.filter(function (file) {
-				console.log(file.path)
         return !!(
           file.path.startsWith('src/blog/') &&
-          file.path.endsWith('.md')
+          file.path.endsWith('.json')
         );
       });
     }
