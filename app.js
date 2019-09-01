@@ -22,6 +22,19 @@ const router = new VueRouter({
       component: httpVueLoader("./src/views/ImageGallery.vue")
     },
     {
+      path: "/blog",
+      name: "blog",
+      component: httpVueLoader("./src/views/Blog.vue")
+    },
+    {
+      path: "/blog/:path",
+      name: "blogPosts",
+      component: httpVueLoader("./src/views/BlogPosts.vue"),
+      props: (route) => ({
+        path: route.params.path
+      })
+    },
+    {
       path: "/contact",
       name: "contact",
       component: httpVueLoader("./src/views/Contact.vue")
@@ -37,9 +50,9 @@ const app = new Vue({
   },
   router,
   created () {
-	const redirect = sessionStorage.redirect
-	delete sessionStorage.redirect
-    if (redirect && redirect != location.href) {
+    const redirect = sessionStorage.redirect
+    delete sessionStorage.redirect
+    if (redirect && redirect !== location.href) {
       this.$router.push(redirect)
     }
   }

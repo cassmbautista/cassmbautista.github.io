@@ -13,6 +13,6 @@ module.exports = {
 
 <style type="text/css">
 	#header {
-    	background-image: url(../_imgs/header_photo.jpg);
+    	background-image: url(/src/_imgs/header_photo.jpg);
 	}
 </style>
