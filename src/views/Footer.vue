@@ -11,9 +11,9 @@
     <hr>
     <i-container>
       <i-row>
-        <i-column><a href="https://dagorhir.com" target="_blank"><img src="src/_imgs/dagorhir_logo.png" class="image -responsive" ></a></i-column>
-        <i-column><a href="https://amtgard.com" target="_blank"><img src="src/_imgs/amtgard_logo.png" class="image -responsive" ></a></i-column>
-        <i-column><a href="http://www.belegarth.com/" target="_blank"><img src="src/_imgs/belegarth_logo.png" class="image -responsive" ></a></i-column>
+        <i-column><a href="https://dagorhir.com" target="_blank"><img src="/src/_imgs/dagorhir_logo.png" class="image -responsive" ></a></i-column>
+        <i-column><a href="https://amtgard.com" target="_blank"><img src="/src/_imgs/amtgard_logo.png" class="image -responsive" ></a></i-column>
+        <i-column><a href="http://www.belegarth.com/" target="_blank"><img src="/src/_imgs/belegarth_logo.png" class="image -responsive" ></a></i-column>
       </i-row>
     </i-container>
   </i-layout-footer>

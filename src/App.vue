@@ -13,9 +13,9 @@
 module.exports = {
   name: 'App',
   components: {
-    'top-header': httpVueLoader("./views/Header.vue"),
-    'navigation-top': httpVueLoader("./views/NavTop.vue"),
-    'home-footer': httpVueLoader("./views/Footer.vue")
+    'top-header': httpVueLoader("/src/views/Header.vue"),
+    'navigation-top': httpVueLoader("/src/views/NavTop.vue"),
+    'home-footer': httpVueLoader("/src/views/Footer.vue")
   }
 }
 </script>

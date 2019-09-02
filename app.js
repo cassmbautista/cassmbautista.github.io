@@ -9,27 +9,27 @@ const router = new VueRouter({
     {
       path: '*',
       name: '404',
-      component:  httpVueLoader("./src/views/NotFound.vue")
+      component:  httpVueLoader("/src/views/NotFound.vue")
     },
     {
       path: "/",
       name: "home",
-      component: httpVueLoader("./src/views/Home.vue")
+      component: httpVueLoader("/src/views/Home.vue")
     },
     {
       path: "/gallery",
       name: "gallery",
-      component: httpVueLoader("./src/views/ImageGallery.vue")
+      component: httpVueLoader("/src/views/ImageGallery.vue")
     },
     {
       path: "/blog",
       name: "blog",
-      component: httpVueLoader("./src/views/Blog.vue")
+      component: httpVueLoader("/src/views/Blog.vue")
     },
     {
       path: "/blog/:path",
       name: "blogPosts",
-      component: httpVueLoader("./src/views/BlogPosts.vue"),
+      component: httpVueLoader("/src/views/BlogPosts.vue"),
       props: (route) => ({
         path: route.params.path
       })
@@ -37,7 +37,7 @@ const router = new VueRouter({
     {
       path: "/contact",
       name: "contact",
-      component: httpVueLoader("./src/views/Contact.vue")
+      component: httpVueLoader("/src/views/Contact.vue")
     }
   ]
 });
@@ -46,7 +46,7 @@ const app = new Vue({
   el: '#app',
   template: '<app></app>',
   components: {
-    'app': httpVueLoader('./src/App.vue')
+    'app': httpVueLoader('/src/App.vue')
   },
   router,
   created () {
