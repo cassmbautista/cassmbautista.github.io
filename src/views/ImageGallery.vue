@@ -18,13 +18,13 @@
 
     <i-row class="_display-flex _justify-content-start">
       <template v-for="(image, imageIndex) in images">
-        <i-column class="_margin-bottom-3-4 _flex-grow-0" 
+        <i-column class="_margin-bottom-3-4 _padding-right-3-4 _padding-left-0 _flex-grow-0"
             v-if="selectedFilter === 'all' || selectedFilter === image.filter">
           <img
             :key="'image' + imageIndex"
             :src="image.thumbnail || image.name"
             :alt="image.alt"
-            class="image -thumbnail"
+            class="image"
             @click="showLightbox(image.name)"
           />
         </i-column>
@@ -159,7 +159,7 @@ module.exports = {
 </script>
 
 <style scoped>
-.image.-thumbnail {
+.image {
   max-width: 200px;
   max-height: 200px;
 }
