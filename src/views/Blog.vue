@@ -55,7 +55,9 @@ module.exports = {
 				axios.get(blogFile.path)
 					.then(function (response) {
 						response.data.path = blogFile.path.replace('src/blog/', "").replace('.json', '');
-						this.cards.push(response.data);
+						if(response.data.published){
+							this.cards.push(response.data);
+						}
 					}.bind(this));
 			}
 		},
@@ -63,7 +65,6 @@ module.exports = {
       return {
         name: 'blogPosts',
         params: {
-					title: row.title,
           path: row.path
         }
       };

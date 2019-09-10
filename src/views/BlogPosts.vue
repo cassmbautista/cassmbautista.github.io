@@ -17,7 +17,7 @@ module.exports = {
 	},
 	methods: {
 		getContent: function () {
-			axios.get("../src/blog/" + this.path + ".md")
+			axios.get("/src/blog/" + this.path + ".md")
 				.then(function (response) {
 					this.content = marked(response.data);
 				}.bind(this));
